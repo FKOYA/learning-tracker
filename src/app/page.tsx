@@ -1,3 +1,5 @@
+import { sortByProgressDesc } from "@/lib/progress";
+
 type LearningItem = {
   title: string;
   progress: number;
@@ -28,6 +30,8 @@ const learningItems: LearningItem[] = [
 ];
 
 export default function Home() {
+  const sortedLearningItems = sortByProgressDesc(learningItems);
+
   return (
     <main className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100 px-6 py-10 text-slate-900 sm:px-10">
       <div className="mx-auto w-full max-w-5xl">
@@ -40,7 +44,7 @@ export default function Home() {
         </header>
 
         <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {learningItems.map((item) => (
+          {sortedLearningItems.map((item) => (
             <article
               key={item.title}
               className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
