@@ -23,9 +23,9 @@ describe("isProgressInRange", () => {
 describe("sortByProgressDesc", () => {
   it("returns items sorted by progress in descending order", () => {
     const items = [
-      { title: "SQL", progress: 30 },
-      { title: "Next.js", progress: 70 },
-      { title: "Docker", progress: 55 },
+      { title: "SQL", category: "Database", progress: 30, memo: "join" },
+      { title: "Next.js", category: "Frontend", progress: 70, memo: "rsc" },
+      { title: "Docker", category: "Infrastructure", progress: 55, memo: "build" },
     ];
 
     expect(sortByProgressDesc(items).map((item) => item.title)).toEqual([
@@ -33,6 +33,16 @@ describe("sortByProgressDesc", () => {
       "Docker",
       "SQL",
     ]);
+  });
+
+  it("sorts correctly when items include additional fields like category", () => {
+    const items = [
+      { title: "A", category: "Frontend", progress: 10, memo: "a" },
+      { title: "B", category: "Database", progress: 90, memo: "b" },
+      { title: "C", category: "Language", progress: 50, memo: "c" },
+    ];
+
+    expect(sortByProgressDesc(items).map((item) => item.title)).toEqual(["B", "C", "A"]);
   });
 
   it("keeps original order for items with the same progress", () => {
