@@ -63,7 +63,7 @@ export default function Home() {
     .filter((group) => group.items.length > 0);
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100 px-6 py-10 text-slate-900 sm:px-10">
+    <main className="flex-1 bg-gradient-to-b from-slate-50 to-slate-100 px-6 py-10 text-slate-900 sm:px-10">
       <div className="mx-auto w-full max-w-5xl">
         <header className="mb-8">
           <p className="text-sm font-semibold tracking-wide text-sky-700">LEARNING TRACKER</p>
