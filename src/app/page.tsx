@@ -3,6 +3,7 @@ import { sortByProgressDesc } from "@/lib/progress";
 type LearningItem = {
   title: string;
   category: string;
+  tags: string[];
   progress: number;
   memo: string;
 };
@@ -11,24 +12,28 @@ const learningItems: LearningItem[] = [
   {
     title: "Next.js App Router",
     category: "Frontend",
+    tags: ["App Router", "Server Components", "Layout"],
     progress: 70,
     memo: "Server Components とレイアウト構造を復習中",
   },
   {
     title: "TypeScript",
     category: "Language",
+    tags: ["Type Inference", "Union", "Intersection"],
     progress: 45,
     memo: "型推論と Union / Intersection の使い分けを強化",
   },
   {
     title: "SQL",
     category: "Database",
+    tags: ["JOIN", "Aggregation", "Hands-on"],
     progress: 30,
     memo: "JOIN と集計クエリのパターンをハンズオンで学習",
   },
   {
     title: "Docker",
     category: "Infrastructure",
+    tags: ["Multi-stage Build", "Dev Environment"],
     progress: 55,
     memo: "マルチステージビルドと開発環境の最適化を試す",
   },
@@ -64,7 +69,7 @@ export default function Home() {
           <p className="text-sm font-semibold tracking-wide text-sky-700">LEARNING TRACKER</p>
           <h1 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">学習項目一覧</h1>
           <p className="mt-3 text-sm text-slate-600 sm:text-base">
-            title・category・progress・memo をカード形式で管理するシンプルなページです。
+            title・category・tags・progress・memo をカード形式で管理するシンプルなページです。
           </p>
         </header>
 
@@ -79,6 +84,16 @@ export default function Home() {
                     className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
                   >
                     <h3 className="text-lg font-semibold">{item.title}</h3>
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {item.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="rounded-full border border-sky-200 bg-sky-50 px-2 py-0.5 text-xs font-medium text-sky-700"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
 
                     <div className="mt-4">
                       <div className="mb-1 flex items-center justify-between text-xs text-slate-600">
