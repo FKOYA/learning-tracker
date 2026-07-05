@@ -22,12 +22,19 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const currentYear = new Date().getFullYear();
+
   return (
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {children}
+        <footer className="border-t border-slate-200 bg-white px-6 py-4 text-center text-sm text-slate-600 sm:px-10">
+          &copy; {currentYear} Learning Tracker
+        </footer>
+      </body>
     </html>
   );
 }

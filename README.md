@@ -1,5 +1,13 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## 機能一覧
+
+- 学習項目を **title / tags / progress / memo** のカード形式で表示
+- 進捗率（progress）をパーセント表示し、プログレスバーで可視化
+- `sortByProgressDesc` により学習項目を進捗率の高い順で表示
+- `isProgressInRange` で進捗率が `0-100` の範囲かを判定
+- `vitest` による進捗ユーティリティ関数のテストを用意
+
 ## Getting Started
 
 First, run the development server:
